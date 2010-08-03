@@ -1,0 +1,26 @@
+<?php if ($this->pageCount): ?> 
+    <div class="paginationControl">
+    <!-- Página anterior --> 
+    <?php if (isset($this->previous)): ?> 
+        <a href="<?php echo  $this->url(array('action'=>'index','pagina' => $this->previous)); ?>">&lt; Anterior</a> | 
+    <?php else: ?> 
+        <span class="disabled">&lt; Anterior</span> | 
+    <?php endif; ?> 
+
+    <!-- numeração -->
+    <?php foreach ($this->pagesInRange as $page): ?> 
+        <?php if ($page != $this->current): ?>
+        <a href="<?php echo  $this->url(array('action'=>'index','pagina' => $page)); ?>"><?php echo  $page; ?></a> | 
+          <?php else: ?>
+        <?php echo  $page; ?> | 
+          <?php endif; ?>
+    <?php endforeach; ?>
+
+    <!-- Próxima --> 
+    <?php if (isset($this->next)): ?> 
+          <a href="<?php echo  $this->url(array('action'=>'index','pagina' => $this->next)); ?>">Pr&oacute;xima &gt;</a>
+    <?php else: ?> 
+        <span class="disabled">Pr&oacute;xima &gt;</span>
+    <?php endif; ?> 
+    </div> 
+<?php endif; ?>

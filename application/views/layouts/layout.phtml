@@ -1,0 +1,44 @@
+<?php 
+	echo $this->doctype() 
+?>
+<html> 
+<head>
+<?php
+	echo $this->headMeta(); 
+	echo $this->headTitle();
+	echo $this->headStyle();
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery-1.4.2.min.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.dimensions.pack.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.positionBy.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.bgiframe.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.jdMenu.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/standard.js','text/javascript');
+	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/jquery.jdMenu.css');
+	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/jdMenu.slate.css');
+	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/master.css');
+	echo $this->headScript();
+	echo $this->headLink()
+	
+	
+	
+	
+?>	
+</head> 
+<body class="soria">
+	<div id="header">
+		<h1><?php echo $this->placeholder('title') ?></h1>
+	</div>
+	<?php if ($this->navigation()->hasPages()):?>
+		<div id="menu">
+			<?php	$this->navigation()->menu()->setULClass('jd_menu jd_menu_slate'); 
+			echo $this->navigation ()->menu ();?>
+		</div>
+	<?php endif;?>
+	<?php echo $this->flashMessenger();?>	
+	<div id="container">
+		<?php echo $this->layout()->content ?>
+	</div>
+	<div id="footer"><?php echo $this->placeholder('footer') ?>
+	</div>
+</body>
+</html>

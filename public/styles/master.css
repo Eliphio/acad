@@ -1,0 +1,242 @@
+html, body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #EAF6FF;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font-size: 95%;
+}
+
+form {
+	background-color: #EAF6FF;
+	width: 98%; 
+}
+
+table {
+	font-size: 1em;
+}
+
+#header {
+	text-align: center;
+	width: 100%;
+	min-height: 10%;
+	height: auto;
+	background-image: url("../images/logo_pbh.gif");
+	background-position: right;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+/* Para Internet Explorer */
+* html #header {
+	height: 10%;
+}
+
+#container {
+	min-height: 80%;
+	height: auto;
+	width: 100%;
+	padding:5px;
+	border-top: 1px dashed #000080;
+	border-bottom: 1px dashed #000080;
+	background-image: url("../images/logo.gif");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+* html #header {
+	height: 80%;
+}
+
+#footer {
+	padding-top: 1%;
+	text-align: center;
+	font: 11px sans-serif;
+	min-height: 10%;
+	height: auto;
+	color: #000080;
+}
+
+/* Para Internet Explorer */
+* html #footer {
+	height: 10%;
+}
+
+li {
+/*	list-style: none;*/
+}
+
+h1 {
+	padding-top: 1.5%;
+	font-size: 24px;
+	color: #000080;
+	vertical-align: middle;
+	text-align: center;
+}
+
+h2 {
+	background-color: #EAF6FF;
+	width: 80%;
+	left: 10%;
+	position: relative;
+	border: solid 1px black;
+	color: red;
+}
+
+input[type=radio] {
+	border: none;
+	width: auto;
+}
+
+/*input[type=checkbox] {
+	border: none;
+	width: auto;
+}*/
+
+input[type=text] {
+	text-transform: uppercase;
+	max-width: 95%;
+}
+/*
+textarea {
+	width: 90%;
+}
+*/
+.dijitMenuBar {
+	background-color: transparent;
+	margin: 1px 0 0;
+	cursor: pointer;
+	height: 1.9em;
+}
+
+.dijitMenuBar ul {
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+	margin: 0;
+	padding: 0;
+}
+
+.dijitMenuBar ul li a {
+	color: #333;
+	padding: 2px 11px 2px 9px;
+	z-index: 48;
+}
+
+.dijitMenuBar ul li a:hover {
+	background-color: #dedede;
+	z-index: 48;
+}
+
+.dijitMenuBar li {
+	float: left;
+}
+
+.dijitMenuBar li ul {
+	border: 1px solid #dedede;
+	background-color: #eee;
+	padding: 2px;
+	position: absolute;
+	width: 158px;
+}
+
+.dijitMenuBar a {
+	display: block;
+}
+
+.dijitMenuBar li ul li a {
+	position: relative;
+	padding: 1px 9px 1px 19px;
+	width: 130px;
+}
+
+.dijitMenuBar li ul ul {
+	margin: -1.95em 0 0 158px;
+}
+
+.dijitMenuBar .dijitHotKey { 
+	text-decoration:underline;
+	
+}
+
+.soria .dijitMenuBar .dijitMenuHasChildren {
+	background-image: url('../js/dijit/themes/tundra/images/treeExpand_plus.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+a {
+	text-decoration: none;
+}
+.mensagemerro {
+	border: #FF0000 solid 1px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.errors {
+	border: #FF0000 solid 1px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.mensagemerrologon {
+	border: #FF0000 solid 1px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FF0000;
+}
+
+.mensagemsucesso {
+	border: #009900 solid 1px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #009900;
+}
+
+fieldset {
+	border: solid 1px #4169E1;
+	padding: 1%;
+}
+
+legend {
+	color: #4169E1;
+}
+
+#tbl-resultado {
+	background-color: #EAF6FF;
+	width: 80%; 
+	left: 10%;
+	position: relative;
+	border-collapse: collapse;
+}
+
+#tbl-resultado th{
+	background-color: #9DE0FF;
+	border: 1px solid black;
+	text-align: center;
+}
+#tbl-resultado td{
+	border: 1px solid black;
+	text-align: center;
+}
+
+.submit-group{
+	text-align: center;
+	margin: 1em 1em 1em 1em;  
+}

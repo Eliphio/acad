@@ -1,0 +1,19 @@
+<?php
+echo "elan";
+?>
+
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+    $('a[name=modal]').click(function(e) {
+        //cancela o comportamento padrão do link
+    	    e.preventDefault();
+    	    //armazena o atributo href do link
+    	    $("#conteudo").load($(this).attr('href'));
+    });
+});
+
+</script>
+<a name="modal" href="http://localhost/acad/public/Equipes-ubs/addbyajax/cod_unsa/1270">inclui</a>
+<div id="conteudo"></div>

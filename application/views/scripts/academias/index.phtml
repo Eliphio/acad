@@ -1,0 +1,68 @@
+<script type="text/javascript">
+<!--
+    $(document).ready(function() {
+        $("#add").click(function(){location.href = '<?php echo $this->url(array('action'=>'add')); ?>'});
+        $("#tblAcademias tr:nth-child(even)").addClass("odd");
+    });
+-->
+</script>
+<style>
+<!--
+tr.odd {
+  background: #B9D3EE;
+}
+th {
+	background: #B9D3CC;
+}
+-->
+</style>
+<table style="margin-left:1%;width: 98%;background-color: #EAF6FF;">
+	<tr>
+		<th colspan="2" style="background-color: #BEBEBE;">Academias</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<?php
+		if (isset ( $this->paginator )) :
+			?>
+        	<table id="tblAcademias"
+				style="margin-left: 3%; margin-right: 3%; width: 94%; margin-top: 1%; margin-bottom: 1%; border-collapse: collapse; border-spacing: 3em">
+			<thead>
+				<tr>
+					<th
+						style="border: 1px solid black; text-align: left;">Nome Academia</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Professor Responsável</th>
+					<th
+						style="border: 1px solid black; text-align: left;"></th>
+							
+				</tr>
+            </thead>
+        		<?php
+					foreach ( $this->paginator as $data ) :
+					$profissional = $data->findParentRow('Model_ProfissionaisSaude');
+				?>
+            	<tr>
+
+				<td style="border: 1px solid black;"><?php echo $data ['nom_acad'];?></td>
+				<td style="border: 1px solid black;"><?php echo $profissional['nom_profis'];?></td>
+				<td style="border: 1px solid black;">
+					<a href="<?php echo $this->url ( array ('action' => 'edit', 'cod_acad' => $data ['cod_acad'] ) );?>">Alterar</a> /
+					<a href="<?php echo $this->url ( array ('action' => 'delete', 'cod_acad' => $data ['cod_acad'] ) );?>">Excluir</a>					
+				</td>
+				
+			</tr>
+			<?php endforeach;?>           	
+        	</table>
+        </td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+            <?php echo $this->paginationControl ( $this->paginator, 'Sliding', 'index/paginador.phtml' );?>
+        </td>
+	</tr>
+		<?php endif;?>
+	<tr>
+		<td colspan="2" align="right" nowrap="nowrap"><input type="button" id="add" value="Nova Academia" /></td>
+	</tr>
+</table>

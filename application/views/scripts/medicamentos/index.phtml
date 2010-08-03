@@ -1,0 +1,91 @@
+<script type="text/javascript">
+<!--
+    $(document).ready(function() {
+        $("#add").click(function(){location.href = '<?php echo $this->url(array('action'=>'add')); ?>'});
+        $("#tblAcademias tr:nth-child(even)").addClass("odd");
+    });
+-->
+</script>
+<style>
+<!--
+tr.odd {
+  background: #B9D3EE;
+}
+th {
+	background: #B9D3CC;
+}
+-->
+</style>
+<table style="margin-left:1%;width: 98%;background-color: #EAF6FF;">
+	<tr>
+		<th colspan="2" style="background-color: #BEBEBE;">Medicamentos</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<?php
+		if (isset ( $this->paginator )) :
+			?>
+        	<table id="tblAcademias"
+				style="margin-left: 3%; margin-right: 3%; width: 94%; margin-top: 1%; margin-bottom: 1%; border-collapse: collapse; border-spacing: 3em">
+       		<?php
+       		$fm ='';
+       		foreach ( $this->paginator as $data ) :
+       			 
+				switch ($data['cod_fami_medic']) {
+					case 1:
+						$familia = 'ANTIDEPRESSIVOS E ANSIOLÍTICOS';
+					break;
+					case 2:
+						$familia = 'ANALGÉSICOS E ANTINFLAMATÓRIOS';
+					break;
+					case 3:
+						$familia = 'CARDIOVASCULARES/ANTIHIPERTENSIVOS';
+					break;
+					case 4:
+						$familia = 'ANTIDIABÁTICOS ORAIS/HIPOGLICEMIANTES';
+					break;
+					case 5:
+						$familia = 'PARA DISLIPIDEMIAS';
+					break;
+				
+				}
+        		if ($fm != $data['cod_fami_medic']):?>
+    			<tr><th colspan="3" style="border: 1px solid black;"><?php echo $familia;?></th></tr>
+				<tr>
+					<th
+						style="border: 1px solid black; text-align: left;">Nome</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Apresentação</th>
+					<th
+						style="border: 1px solid black; text-align: left;"></th>
+							
+				</tr>
+        		<?php 
+        		$fm=$data['cod_fami_medic'];
+        		endif;
+			?>
+            	<tr>
+
+				<!-- <td style="border: 1px solid black;"><?php //echo $familia;?></td> -->
+				<td style="border: 1px solid black;"><?php echo $data ['nom_medic'];?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['apres_medic'];?></td>
+				<td style="border: 1px solid black;">
+					<a href="<?php echo $this->url ( array ('action' => 'edit', 'cod_medic' => $data ['cod_medic'] ) );?>">Alterar</a> /
+					<a href="<?php echo $this->url ( array ('action' => 'delete', 'cod_medic' => $data ['cod_medic'] ) );?>">Excluir</a>					
+				</td>
+				
+			</tr>
+			<?php endforeach;?>           	
+        	</table>
+        </td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+            <?php echo $this->paginationControl ( $this->paginator, 'Sliding', 'index/paginador.phtml' );?>
+        </td>
+	</tr>
+		<?php endif;?>
+	<tr>
+		<td colspan="2" align="right" nowrap="nowrap"><input type="button" id="add" value="Novo Medicamento" /></td>
+	</tr>
+</table>

@@ -1,0 +1,74 @@
+<script type="text/javascript">
+<!--
+    $(document).ready(function() {
+        $("#add").click(function(){location.href = '<?php echo $this->url(array('action'=>'add')); ?>'});
+        $("#tblAcademias tr:nth-child(even)").addClass("odd");
+    });
+-->
+</script>
+<style>
+<!--
+tr.odd {
+  background: #B9D3EE;
+}
+th {
+	background: #B9D3CC;
+}
+-->
+</style>
+<table style="margin-left:1%;width: 98%;background-color: #EAF6FF;">
+	<tr>
+		<th colspan="2" style="background-color: #BEBEBE;">Horários de Funcionamento</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<?php
+		if (isset ( $this->paginator )) :
+			?>
+        	<table id="tblAcademias"
+				style="margin-left: 3%; margin-right: 3%; width: 94%; margin-top: 1%; margin-bottom: 1%; border-collapse: collapse; border-spacing: 3em">
+			<thead>
+				<tr>
+					<th
+						style="border: 1px solid black; text-align: left;">Academia</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Horário</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Vagas Turma A</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Vagas Turma B</th>
+					<th
+						style="border: 1px solid black; text-align: left;"></th>
+							
+				</tr>
+            </thead>
+        		<?php
+					foreach ( $this->paginator as $data ) :
+					$academia = $data->findParentRow('Model_Academias');
+				?>
+            	<tr>
+
+				<td style="border: 1px solid black;"><?php echo $academia['nom_acad'];?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['desc_hor'];?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['vagas_turma_a'];?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['vagas_turma_b'];?></td>
+				<td style="border: 1px solid black;">
+					<a href="<?php echo $this->url ( array ('action' => 'edit', 'cod_hor' => $data ['cod_hor'] ) );?>">Alterar</a> /
+					<a href="<?php echo $this->url ( array ('action' => 'delete', 'cod_hor' => $data ['cod_hor'] ) );?>">Excluir</a>					
+				</td>
+				
+			</tr>
+			<?php endforeach;?>           	
+        	</table>
+        </td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+            <?php echo $this->paginationControl ( $this->paginator, 'Sliding', 'index/paginador.phtml' );?>
+        </td>
+	</tr>
+		<?php endif;?>
+	<tr>
+		<td colspan="2" align="right" nowrap="nowrap"><input type="button" id="add" value="Novo Horário" /></td>
+	</tr>
+</table>

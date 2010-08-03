@@ -1,0 +1,70 @@
+<script type="text/javascript">
+<!--
+    $(document).ready(function() {
+        $("#add").click(function(){location.href = '<?php echo $this->url(array('action'=>'add')); ?>'});
+        $("#tblAcademias tr:nth-child(even)").addClass("odd");
+    });
+-->
+</script>
+<style>
+<!--
+tr.odd {
+  background: #B9D3EE;
+}
+th {
+	background: #B9D3CC;
+}
+-->
+</style>
+<table style="margin-left:1%;width: 98%;background-color: #EAF6FF;">
+	<tr>
+		<th colspan="2" style="background-color: #BEBEBE;">RCQ (CM cintura/CM quadril)</th>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<?php
+		if (isset ( $this->paginator )) :
+			?>
+        	<table id="tblAcademias"
+				style="margin-left: 3%; margin-right: 3%; width: 94%; margin-top: 1%; margin-bottom: 1%; border-collapse: collapse; border-spacing: 3em">
+			<thead>
+				<tr>
+					<th
+						style="border: 1px solid black; text-align: left;">Sexo</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Valor Medido</th>
+					<th
+						style="border: 1px solid black; text-align: left;">Classificação</th>
+					<th
+						style="border: 1px solid black; text-align: left;"></th>
+							
+				</tr>
+            </thead>
+        		<?php
+					foreach ( $this->paginator as $data ) :
+				?>
+            	<tr>
+
+				<td style="border: 1px solid black;"><?php echo ($data ['cod_sexo'] == 0)? 'Feminino':'Masculino';?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['vlr_medi'];?></td>
+				<td style="border: 1px solid black;"><?php echo $data ['desc_class'];?></td>
+				<td style="border: 1px solid black;">
+					<a href="<?php echo $this->url ( array ('action' => 'edit', 'cod_class' => $data ['cod_class'] ) );?>">Alterar</a> /
+					<a href="<?php echo $this->url ( array ('action' => 'delete', 'cod_class' => $data ['cod_class'] ) );?>">Excluir</a>					
+				</td>
+				
+			</tr>
+			<?php endforeach;?>           	
+        	</table>
+        </td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+            <?php echo $this->paginationControl ( $this->paginator, 'Sliding', 'index/paginador.phtml' );?>
+        </td>
+	</tr>
+		<?php endif;?>
+	<tr>
+		<td colspan="2" align="right" nowrap="nowrap"><input type="button" id="add" value="Nova Classificação" /></td>
+	</tr>
+</table>

@@ -1,0 +1,193 @@
+<link
+	href="<?php
+	echo $this->baseUrl () . '/styles/cupertino/jquery.ui.all.css';
+	?>"
+	media="screen" rel="stylesheet" type="text/css" />
+<link
+	href="<?php
+	echo $this->baseUrl () . '/styles/cupertino/jquery.ui.datepicker.css';
+	?>"
+	media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php
+	echo $this->baseUrl () . '/js/jquery.ui.core.min.js';
+	?>"></script>
+<script type="text/javascript"
+	src="<?php
+	echo $this->baseUrl () . '/js/jquery.ui.widget.min.js';
+	?>"></script>
+<script type="text/javascript"
+	src="<?php
+	echo $this->baseUrl () . '/js/jquery.ui.datepicker.min.js';
+	?>"></script>
+<script type="text/javascript"
+	src="<?php
+	echo $this->baseUrl () . '/js/jquery.ui.datepicker-pt-BR.js';
+	?>"></script>
+<style type="text/css">
+/* O z-index do div#mask deve ser menor que do div#boxes e do div.window */
+#mask {
+	position: absolute;
+	z-index: 9000;
+	background-color: #000;
+	display: none;
+}
+
+#boxes .window {
+	position: absolute;
+	/*	width: 440px;
+ * 	padding: 20px;
+	height: 200px;*/
+	margin: 0;
+	padding: 0;
+	background-color: #EAF6FF;
+	display: none;
+	z-index: 9999;
+}
+
+/* Personalize a janela modal aqui. Você pode adicionar uma imagem de fundo. */
+#boxes #dialog { /*	background-color: white;*/
+	
+}
+
+} /* posiciona o link para fechar a janela */
+.close {
+	width: 100%;
+	display: block;
+	text-align: right;
+}
+</style>
+
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+	$("#ida_usua").attr({readonly: "true"});
+	$("#dat_nasc").change(
+		function(){
+			var idade = calculaIdade(this);
+			if (idade) {
+				$("#ida_usua").val(idade);
+			}
+		})
+	$("#dat_nasc").datepicker({
+		autoSize: true,
+		yearRange: 'c-99:c', 
+		changeMonth: true,
+		changeYear: true
+	});
+	$("#dat_aval").datepicker({
+		autoSize: true,
+		yearRange: 'c-3:c', 
+		changeMonth: true,
+		changeYear: true
+	});
+    $("input[name^=num_vezes_sem]").click(function(){
+    	$("input[name^=dias_sem]").each(
+            	function(){
+            		this.checked = false;
+            	}
+        )
+    });
+    $("input[name^=dias_sem]").click(function(){
+   		var n = $("input[name^=dias_sem]").filter(":checked").length;
+   		var lim = $("input[name^=num_vezes_sem]").filter(":checked").val();
+   		if (lim === undefined)
+       		lim = 0;
+		if (n > lim){
+			alert("Marcar somente " + lim + " dia(s)");
+			this.checked = false;
+		}           		
+    });
+    $('#cod_unsa').change(function(){
+        $('#cod_eqp_ubs').load('equipe/cod_unsa/' + $('#cod_unsa').val());
+        $('#cod_profis_ubs').html("");
+    });
+
+    $('#cod_eqp_ubs').change(function(){
+        $('#cod_profis_ubs').load('profissional/cod_eqp_ubs/' + $('#cod_eqp_ubs').val());
+    });
+    
+    //seleciona os elementos a com atributo name="modal"
+    $('a[name=modal]').click(function(e) {
+    //cancela o comportamento padrão do link
+	    e.preventDefault();
+	    //armazena o atributo href do link
+	    var id = $(this).attr('href') + '/cod_unsa/' + $('#cod_unsa').val()+'/cod_eqp_ubs/' + $('#cod_eqp_ubs').val();
+	    $("#elan").load(id,null,function (){carrega()});
+
+	    //armazena a largura e a altura da tela
+	    var maskHeight = $(document).height();
+	    var maskWidth = $(window).width();
+	    //Define largura e altura do div#mask iguais às dimensões da tela
+	    $('#mask').css({'width':maskWidth,'height':maskHeight});
+	    //efeito de transição
+	    $('#mask').fadeIn(1000);
+	    $('#mask').fadeTo("slow",0.8);
+	    //centraliza na tela a janela popup
+	    $("#dialog").css({'top':this.offsetTop,'left':this.offsetLeft});
+	    //efeito de transição
+	    $("#dialog").fadeIn(0);
+    });
+	
+	    //se o botãoo fechar for clicado
+    fecharjanela();
+  	
+});
+
+function fecharjanela(){
+	  $('.window .close').click(function (e) {
+		    //cancela o comportamento padrão do link
+		    e.preventDefault();
+		    $('#mask, .window').hide();
+		    $('#conteudo').html("");
+	    });	
+}
+function carrega(){
+
+    $("#conteudo > form").submit(function(e) {
+    	e.preventDefault();                                                                       
+        var data = $(this).serialize(); // Dados do formulário     
+
+        // Envia o formulário via Ajax
+        var nome = this.id;
+        $.ajax({
+                type: "POST",
+                url: this.action,
+                data: data,
+                cache: false,
+                dataType: "json",
+                success: function(dados)
+                		{
+						   if (nome == 'fProfissional')
+						   {
+						        $('#cod_profis_ubs').load('profissional/cod_eqp_ubs/' + $('#cod_eqp_ubs').val());
+						   }
+						   else
+						   {
+							   $('#cod_eqp_ubs').load('equipe/cod_unsa/' + $('#cod_unsa').val());
+							   $('#cod_profis_ubs').html("");
+						   } 
+    					   $('#mask, .window').hide();
+    					   $('#conteudo').html("");
+						}
+        });
+        return false; // Previne o form de ser enviado pela forma normal
+	});
+
+
+}
+//-->
+</script>
+<div id="boxes"><!-- #personalize sua janela modal aqui -->
+<div id="dialog" class="window">
+<div style="width: 100%; text-align: right; background-color: white;"><!-- Botão para fechar a janela tem class="close" -->
+<a href="#" class="close">Fechar [X]</a></div>
+<div id="elan" style="width: 100%; margin: 5px;"></div>
+</div>
+<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+<div id="mask"></div>
+</div>
+<?php
+echo $this->form?>

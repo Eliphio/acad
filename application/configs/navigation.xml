@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+	<nav>
+		<home>
+			<label>Início</label>
+			<controller>index</controller>
+			<action>index</action>
+		</home>
+		<incluir>
+			<label>Incluir</label>
+			<uri>#</uri>
+			<pages>
+				<avaliacao>
+					<label>Avaliação</label>
+					<uri>#</uri>
+					<pages>					
+						<dados>
+							<label>Dados Cadastrais</label>
+							<controller>Dadoscadastrais</controller>
+							<action>add</action>
+						</dados>
+						<anamnese>
+							<label>Anamnese</label>
+							<controller>Anamnese</controller>
+							<action>add</action>
+						</anamnese>
+						<antropometria>
+							<label>Antropometria</label>
+							<controller>Antropometria</controller>
+							<action>inserir</action>
+						</antropometria>
+						<forcaflexibilidade>
+							<label>Força e Flexibilidade</label>
+							<controller>Forcaflexibilidade</controller>
+							<action>inserir</action>
+						</forcaflexibilidade>
+						<testeaerobico>
+							<label>Teste Aeróbico</label>
+							<controller>Testeaerobico</controller>
+							<action>inserir</action>
+						</testeaerobico>
+						<nutricao>
+							<label>Nutrição</label>
+							<controller>Nutricao</controller>
+							<action>inserir</action>
+						</nutricao>
+						<ubs>
+							<label>Ubs</label>
+							<controller>Ubs</controller>
+							<action>inserir</action>
+						</ubs>
+						<obsgerais>
+							<label>Obs. Gerais</label>
+							<controller>Obsgerais</controller>
+							<action>index</action>
+						</obsgerais>
+					</pages>
+				</avaliacao>
+				<reavaliacao>
+					<label>Re-Avaliação</label>
+					<uri>#</uri>
+					<pages>					
+						<anamnese>
+							<label>Anamnese</label>
+							<controller>Anamnese</controller>
+							<action>inserir</action>
+						</anamnese>
+						<antropometria>
+							<label>Antropometria</label>
+							<controller>Antropometria</controller>
+							<action>inserir</action>
+						</antropometria>
+						<forcaflexibilidade>
+							<label>Força e Flexibilidade</label>
+							<controller>Forcaflexibilidade</controller>
+							<action>inserir</action>
+						</forcaflexibilidade>
+						<testeaerobico>
+							<label>Teste Aeróbico</label>
+							<controller>Testeaerobico</controller>
+							<action>inserir</action>
+						</testeaerobico>
+						<nutricao>
+							<label>Nutrição</label>
+							<controller>Nutricao</controller>
+							<action>inserir</action>
+						</nutricao>
+						<ubs>
+							<label>Ubs</label>
+							<controller>Ubs</controller>
+							<action>inserir</action>
+						</ubs>
+						<obsgerais>
+							<label>Obs. Gerais</label>
+							<controller>Obsgerais</controller>
+							<action>index</action>
+						</obsgerais>
+					</pages>
+				</reavaliacao>
+			</pages>
+		</incluir>
+		<alterar>
+			<label>Alterar</label>
+			<uri>#</uri>
+			<pages>					
+				<dados>
+					<label>Dados Cadastrais</label>
+					<controller>Dadoscadastrais</controller>
+					<action>editar</action>
+				</dados>
+				<anamnese>
+					<label>Anamnese</label>
+					<controller>Anamnese</controller>
+					<action>editar</action>
+				</anamnese>
+			</pages>
+		</alterar>
+		<admin>
+			<label>Admin</label>
+			<uri>#</uri>
+			<pages>
+				<academias>
+					<label>Academias</label>
+					<controller>Academias</controller>
+				</academias>
+				<regionais>
+					<label>Regionais</label>
+					<controller>Regionais</controller>
+				</regionais>
+				<atividades>
+					<label>Atividades Profissionais</label>
+					<controller>Atividades-Profissionais</controller>
+				</atividades>
+				<profissionais>
+					<label>Profissionais Saúde</label>
+					<controller>Profissionais-saude</controller>
+				</profissionais>
+				<usuariosistema>
+					<label>Usuário do Sistema</label>
+					<controller>Usuarios-sistema</controller>
+				</usuariosistema>
+				<cbor>
+					<label>Tabela de Ocupações</label>
+					<controller>Cbor-oficial</controller>
+				</cbor>
+				<cintura>
+					<label>Circunferência da Cintura</label>
+					<controller>circunferencia-cintura</controller>
+				</cintura>
+				<flexibilidade>
+					<label>Classificação Flexibilidade</label>
+					<controller>Classificacao-flexibilidade</controller>
+				</flexibilidade>
+				<equipes>
+					<label>Equipes UBS</label>
+					<controller>Equipes-ubs</controller>
+				</equipes>
+				<horarios>
+					<label>Horários de funcionamento das Academias</label>
+					<controller>Horarios-academias</controller>
+				</horarios>
+				<imc>
+					<label>Índice de Massa Corpórea</label>
+					<controller>Imc</controller>
+				</imc>
+				<medicamentos>
+					<label>Medicamentos</label>
+					<controller>Medicamentos</controller>
+				</medicamentos>
+				<gordura>
+					<label>Porcentagem de Gordura</label>
+					<controller>Porcentagem-gordura</controller>
+				</gordura>
+				<pressao>
+					<label>Pressão Arterial</label>
+					<controller>Pressao-arterial</controller>
+				</pressao>
+				<rcq>
+					<label>Relação Cintura Quadril</label>
+					<controller>Relacao-cintura-quadril</controller>
+				</rcq>
+				<unidades>
+					<label>Unidades de Saúde</label>
+					<controller>Unidades</controller>
+				</unidades></pages>			
+		</admin>
+		<sair>
+			<label>Sair do Sistema</label>
+			<controller>index</controller>
+			<action>logout</action>
+		</sair>
+	</nav>
+</configdata>

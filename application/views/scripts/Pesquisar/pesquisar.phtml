@@ -1,0 +1,32 @@
+<?php 
+	if ($rows = count($this->dados) == 0) {
+?>
+<h2>Nenhum resultado encontrado</h2>
+<?php 
+	} else {
+?>
+<br>
+
+<table id="tbl-resultado">
+  <tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th>Data de Nascimento</th>
+  </tr>
+<?php
+	foreach ($this->dados as $dados)
+	{
+?>
+  <tr>
+	<td><?php echo $dados['cod_usua']?></td>
+	<td><a href="<?php echo $this->url(array('controller'=>$this->reqController,
+											 'action'=>$this->reqAction, 
+											 'cod_usua'=>$this->escape($dados['cod_usua']),
+											 'nom_usua'=>$this->escape($dados['nom_usua']),));?>">
+					<?php echo $dados['nom_usua'];?></a>		
+	</td>
+	<td><?php echo $dados['dat_nasc'];?></td>
+  </tr>
+<?php }?>	
+</table>
+<?php }?>
