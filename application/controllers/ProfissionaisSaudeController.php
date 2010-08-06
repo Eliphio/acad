@@ -90,23 +90,20 @@ class ProfissionaisSaudeController extends Zend_Controller_Action
 	
 	public function addbyajaxAction() {
 		$dados = array('cod_ubs' => $this->_getParam('cod_unsa',0), 'cod_eqp_ubs' => $this->_getParam('cod_eqp_ubs',0));
-        $form = $this->getForm ();
-        $form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl(). '/Profissionais-saude/addbyajax');
+        $form = new Form_ProfissionaisSaude ( array ('action' => Zend_Controller_Front::getInstance()->getBaseUrl(). '/Profissionais-saude/addbyajax', 'method' => 'post', 'id' => 'fProfissional' ,'byAjax'=> true) );
 		$form->populate($dados);
         $form->submit->setLabel('Inserir');
-		
-        	
         if ($this->getRequest()->isPost()){
         	$formData = $this->getRequest()->getPost();
         	if ($form->isValid($formData)) {
         		try {
 					$profissionais = new Model_ProfissionaisSaude();
 					if ($profissionais->insert ($formData )) {
-        				$return= Mensagem::getMensagem('MSG-01');
+        				$return = array('msg' => Mensagem::getMensagem('MSG-01'), 'profis' => $profissionais->getAdapter ()->lastInsertId ());
 											}
         		} catch ( Exception $e ) {
-        				$form->populate($formData);
-						$return=  Mensagem::getMensagem('MSG-10');        		
+        			$form->populate($formData);
+					$return=  Mensagem::getMensagem('MSG-10');        		
         		}
         	}
         }else{
@@ -117,8 +114,7 @@ class ProfissionaisSaudeController extends Zend_Controller_Action
         	return false;
         }
 		if ($this->_request->isXmlHttpRequest()) {
-			$arr = array('msg'=>$return);
-			$return = Zend_Json_Encoder::encode($arr);
+			$return = Zend_Json_Encoder::encode($return);
 	        $this->_helper->layout()->disableLayout();
 	        $this->_helper->viewRenderer->setNoRender(true);
 	        echo $return;

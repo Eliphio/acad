@@ -25,8 +25,9 @@ class Form_EquipesUbs extends Form_PadraoForm
         	'required' 		=> true
         ));
         
-
-        $this->addGroup('gEquipe', 'Equipe');
+		if (!isset($options['byAjax'])){
+        	$this->addGroup('gEquipe', 'Equipe');
+		}
 		$this->addElement('Submit','submit',array(
 		     'required'   => false,
 		     'ignore'     => true,

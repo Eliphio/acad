@@ -50,9 +50,10 @@ class Form_ProfissionaisSaude extends Form_PadraoForm
         	'multiOptions'	=> $optEquipes,
         ));
         
+		if (!isset($options['byAjax'])){
         
-        $this->addGroup('gProfissional', 'Profissional Saúde');
-        
+        	$this->addGroup('gProfissional', 'Profissional Saúde');
+		}
 		$this->addElement(
 		    'Submit',
 		    'submit',

@@ -27,7 +27,7 @@ class DadosCadastraisController extends Zend_Controller_Action {
 					$options .= "<option value='$equipe->cod_eqp_ubs'>$equipe->desc_eqp_ubs</option>";
 				}
 			} else {
-				$options = "<option>Nenhuma Equipe cadastrada para esta UBS</option>";
+				$options = "<option value=''>Nenhuma Equipe cadastrada para esta UBS</option>";
 			}
 			echo $options;
 		} catch ( Exception $e ) {
@@ -50,7 +50,7 @@ class DadosCadastraisController extends Zend_Controller_Action {
 					$options .= "<option value='$profissional->cod_profis'>$profissional->nom_profis</option>";
 				}
 			} else {
-				$options = "<option>Nenhum Profissional cadastrado para esta equipe</option>";
+				$options = "<option value=''>Nenhum Profissional cadastrado para esta equipe</option>";
 			}
 			echo $options;
 		} catch ( Exception $e ) {
@@ -59,9 +59,6 @@ class DadosCadastraisController extends Zend_Controller_Action {
 	
 	}
 	
-	public function testeAction() {
-		;
-	}
 	public function addAction() {
 		$this->view->title = "Novo Usuario";
 		$this->view->headTitle ( $this->view->title, 'PREPEND' );
@@ -70,7 +67,11 @@ class DadosCadastraisController extends Zend_Controller_Action {
 		if ($this->getRequest ()->isPost ()) {
 			$elem = $form->getElement('nom_usua');
 			$this->_dados = $this->getRequest ()->getPost ();
-			if ($form->isValid ( $this->_dados )) {
+			$equipes = new Model_EquipesUbs();
+			$profissionais = new Model_ProfissionaisSaude();
+			$form->cod_eqp_ubs->setMultiOptions($equipes->_getToSelect('cod_eqp_ubs','desc_eqp_ubs'));
+			$form->cod_profis_ubs->setMultiOptions($profissionais->_getToSelect('cod_profis','nom_profis'));
+			if ($form->isValid( $this->_dados )) {
 				if (isset ( $this->_dados ['dias_sem'] )) {
 					$dias_semana = ($this->_dados ['dias_sem']);
 					unset ( $this->_dados ['dias_sem'] );

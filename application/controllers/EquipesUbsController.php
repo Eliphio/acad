@@ -96,22 +96,22 @@ class EquipesUbsController extends Zend_Controller_Action
 	}
 	public function addbyajaxAction() {
 		$cod_unsa = array('cod_unsa' => $this->_getParam('cod_unsa',0));
-        $form = $this->getForm ();
-        $form->setAction(Zend_Controller_Front::getInstance()->getBaseUrl(). '/Equipes-ubs/addbyajax');
-		$form->populate($cod_unsa);
+        $form = new Form_EquipesUbs ( array ('action' => Zend_Controller_Front::getInstance()->getBaseUrl().'/Equipes-Ubs/addbyajax', 'method' => 'post', 'id' => 'fEquipe' ,'byAjax'=> true));
         $form->submit->setLabel('Inserir');
-		
+        if ($cod_unsa > 0) {
+        	$form->populate($cod_unsa);
+        } 
         if ($this->getRequest()->isPost()){
         	$formData = $this->getRequest()->getPost();
         	if ($form->isValid($formData)) {
         		try {
 					$equipes = new Model_EquipesUbs();
 					if ($equipes->insert ($formData )) {
-        				$return= Mensagem::getMensagem('MSG-01');
+						$return = array('msg' => Mensagem::getMensagem('MSG-01'), 'eqp' => $equipes->getAdapter ()->lastInsertId ());
 					}
         		} catch ( Exception $e ) {
         				$form->populate($formData);
-						$return=  Mensagem::getMensagem('MSG-10');        		
+						$return =  Mensagem::getMensagem('MSG-10');        		
         		}
         	}
         }else{
@@ -121,15 +121,12 @@ class EquipesUbsController extends Zend_Controller_Action
         	echo $form;
         	return false;
         }
-        //$this->view->form = $form;
         
         
 		if ($this->_request->isXmlHttpRequest()) {
-			$arr = array('msg'=>$return,'nome'=>'nomedofiadaputa', 'codigo'=>'codigodofiadaputa');
-			$return = Zend_Json_Encoder::encode($arr);
+			$return = Zend_Json_Encoder::encode($return);
 	        $this->_helper->layout()->disableLayout();
 	        $this->_helper->viewRenderer->setNoRender(true);
-	        
 	        echo $return;
     	}
 	}

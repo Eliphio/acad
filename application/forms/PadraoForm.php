@@ -21,7 +21,7 @@ class Form_PadraoForm extends Zend_Form {
         $this->submit->setDecorators(array(
             array('ViewHelper'),
             array('Description'),
-            array('HtmlTag', array('tag' => 'div', 'class'=>'submit-group')),
+            array('HtmlTag',array('tag' => 'div', 'style'=> 'text-align: center; padding-top: 1em; padding-bottom: 1em;')),
         ));
         
         

@@ -18,7 +18,6 @@ class Model_PadraoModelos extends Zend_Db_Table_Abstract
     }
     
     public function insert(array $data) {
-		//$data['cod_acad'] = $this->_academia;    	
        	$this->preparaDados($data);
 		if (!isset($this->_data['cod_usua_cad'])) {
 			$this->_data['cod_usua_cad'] = $this->_usuario_sistema;
