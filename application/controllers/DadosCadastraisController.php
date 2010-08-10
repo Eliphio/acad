@@ -1,4 +1,9 @@
 <?php
+/**
+ * 
+ * @author Elan
+ *
+ */
 class DadosCadastraisController extends Zend_Controller_Action {
 	protected $_form;
 	protected $_dados;
