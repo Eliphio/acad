@@ -67,9 +67,9 @@ class DadosCadastraisController extends Zend_Controller_Action {
 		if ($this->getRequest ()->isPost ()) {
 			$elem = $form->getElement('nom_usua');
 			$this->_dados = $this->getRequest ()->getPost ();
-			$equipes = new Model_EquipesUbs();
+			//$equipes = new Model_EquipesUbs();
 			$profissionais = new Model_ProfissionaisSaude();
-			$form->cod_eqp_ubs->setMultiOptions($equipes->_getToSelect('cod_eqp_ubs','desc_eqp_ubs'));
+			//$form->cod_eqp_ubs->setMultiOptions($equipes->_getToSelect('cod_eqp_ubs','desc_eqp_ubs'));
 			$form->cod_profis_ubs->setMultiOptions($profissionais->_getToSelect('cod_profis','nom_profis'));
 			if ($form->isValid( $this->_dados )) {
 				if (isset ( $this->_dados ['dias_sem'] )) {
@@ -82,34 +82,34 @@ class DadosCadastraisController extends Zend_Controller_Action {
 				}
 				try {
 					$dadosCadastrais = new Model_DadosCadastrais ();
-					if ($dadosCadastrais->insert ( $this->_dados )) {
+					if ($dadosCadastrais->insertUsuario( $this->_dados )) {
 						$this->_cod_usua = $dadosCadastrais->getAdapter ()->lastInsertId ();
 						if (isset ( $dias_semana ) && count ( $dias_semana ) > 0) {
 							$dias = new Model_DiasSemana ();
 							foreach ( $dias_semana as $valor ) {
 								$inserir ['cod_usua'] = $this->_cod_usua;
 								$inserir ['dias_sem'] = $valor;
-								$dias->insert ( $inserir );
+								$dias->insertUsuario ( $inserir );
 							}
 						}
 						if (isset ( $ativ_freq ) && count ( $ativ_freq ) > 0) {
-							$atividades = new Model_AtividadeExtra ();
+							$atividades = new Model_AtividadesExtra ();
 							foreach ( $ativ_freq as $valor ) {
 								$inserir ['cod_usua'] = $this->_cod_usua;
 								$inserir ['ativ_freq'] = $valor;
-								$atividades->insert ( $inserir );
+								$atividades->insertUsuario ( $inserir );
 							}
 						}
-						$msg = new Mensagem ();
-						$this->view->mensagem = $msg->getMensagem ( 'MSG-01' );
-						$this->view->estiloMsg = "mensagemsucesso";
-						$this->view->form->reset ();
+						
+        				$this->_helper->FlashMessenger(array('mensagemsucesso' => Mensagem::getMensagem('MSG-01')));
+						$this->view->form->reset();                   	
 					}
 				} catch ( Exception $e ) {
 					$this->_dados ['ativ_freq'] = $ativ_freq;
 					$this->_dados ['dias_sem'] = $dias_semana;
 					$this->view->form->populate ( $this->_dados );
-					$this->view->mensagem = $e->getMessage ();
+					$this->_helper->FlashMessenger(array('mensagemerro' => Mensagem::getMensagem('MSG-10')));        		
+					
 				}
 			}
 		}

@@ -15,10 +15,6 @@ class Model_DadosCadastrais extends Model_PadraoModelos
     protected $_primary = 'cod_usua';
 
     
-    public function insert($data) {
-    	$data["cod_acad"] = $this->_academia;
-    	return parent::insert($data);
-    }
     
     public function update(array $data, array $where) {
         

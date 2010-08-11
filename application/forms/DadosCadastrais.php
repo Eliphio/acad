@@ -12,8 +12,8 @@ class Form_DadosCadastrais extends Form_PadraoForm
  
         //$cbo = new Model_CborOficial();
         //$optcbo = $cbo->_getToSelect('cod_sgrp_cbo','desc_reduzida_sgrp_cbo');
-        //$tipLogr = new Model_TipoLogradouro();//array('db' => 'dbPadrao'));
-        //$opttipLogr = $tipLogr->_getToSelect('tip_logr','desc_tip_logr');
+
+        $opttipLogr = TiposLogradouro::getTiposLogradouro();
         $horario = new Model_HorariosAcademias();
         $optHorario = $horario->_getToSelect('cod_hor','desc_hor');
         $profis = new Model_ProfissionaisSaude();
@@ -88,9 +88,9 @@ class Form_DadosCadastrais extends Form_PadraoForm
          * Cria elementos relativos a endereço do cadastro
          */
         
-        $this->addElement('text', 'tip_logr', array(
+        $this->addElement('select', 'tip_logr', array(
             'label'      => 'Tipo',
-        	//'multiOptions' => $opttipLogr,
+        	'multiOptions' => $opttipLogr,
         	'required' => true
         ));
         $this->addElement('text', 'nom_logr', array(

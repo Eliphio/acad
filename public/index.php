@@ -21,7 +21,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 
 include_once('../application/common/clsMensagem.php');
-
+include_once('../application/common/clsTiposLogradouro.php');
 /** Zend_Application */
 require_once 'Zend/Application.php';
 

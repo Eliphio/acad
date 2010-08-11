@@ -113,6 +113,8 @@ class EquipesUbsController extends Zend_Controller_Action
         				$form->populate($formData);
 						$return =  Mensagem::getMensagem('MSG-10');        		
         		}
+        	} else {
+        		$return = $form->getMessages();
         	}
         }else{
         	$this->_helper->layout()->disableLayout();
