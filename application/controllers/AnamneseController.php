@@ -1,5 +1,5 @@
 <?php
-require_once('Zend/Controller/Action.php');
+
 class AnamneseController extends App_Controller_PadraoController
 {
 

@@ -104,265 +104,230 @@ class Form_Anamnese extends  Form_PadraoForm
 		                         4 => '04 - Acho que recomendaria',
 		                         5 => '05 - Com certeza eu recomendaria',);
 
-		$this->addElement('RadioButton', 'pq_card_superv_medic', array(
+		$this->addElement('Radio', 'pq_card_superv_medic', array(
 			'label'      => 'Seu médico já disse que você possui algum problema cardíaco e recomenda atividade físicas apenas sob supervisão médica ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_dor_peito_dia', array(
+		$this->addElement('Radio', 'pq_dor_peito_dia', array(
 			'label'      => 'Você tem dor no peito provocada por atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_dor_peio_mes', array(
+		$this->addElement('Radio', 'pq_dor_peio_mes', array(
 			'label'      => 'Você teve dor no peito no último mês quando praticava atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_desmaio', array(
+		$this->addElement('Radio', 'pq_desmaio', array(
 			'label'      => 'Você já perdeu a consciência em alguma ocasião ou sofreu alguma queda em virtude de tontura ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_prob_osseo', array(
+		$this->addElement('Radio', 'pq_prob_osseo', array(
 			'label'      => 'Você tem algum problema ósseo ou articular que poderia agravar-se com as atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_pressao_alta', array(
+		$this->addElement('Radio', 'pq_pressao_alta', array(
 			'label'      => 'Algum médico já lhe prescreveu medicamento para pressão arterial ou para o coração ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'pq_superv_medic', array(
+		$this->addElement('Radio', 'pq_superv_medic', array(
 			'label'      => 'Você tem conhecimento, por informação médica ou pela própria experiência, de algum motivo que poderia impedi-lo de participar de atividades físicas sem supervisão médica ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('ValidationTextBox', 'pq_pontua', array(
+		$this->addElement('Text', 'pq_pontua', array(
 			'label'      => 'Pontuação PAR-Q - Classificação de risco do usuário para atividade física',
 			));
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
-  
-		$this->addDisplayGroup($elementos, 'gParq', array('legend'=>"PAR-Q"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
+		$this->addGroup('gParq','PAR-Q');
 			
-		$this->addElement('RadioButton', 'eva_dor_geral', array(
+		$this->addElement('Radio', 'eva_dor_geral', array(
 			'label'      => 'Classificação da dor na EVA (Dores gerais) ',
 			'multiOptions' 	=> $eva,
 			));
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
   
-		$this->addDisplayGroup($elementos, 'gEva', array('legend'=>"EVA"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();			
+		$this->addGroup('gEva', 'EVA');
 			
-		$this->addElement('RadioButton', 'pu_sem_saude', array(
+		$this->addElement('Radio', 'pu_sem_saude', array(
 			'label'      => 'De uma maneira em geral você diria que sua saúde é ',
 			'multiOptions' 	=> $optpu_sem_saude ,
 			));
-		$this->addElement('ValidationTextBox', 'pu_dias_sem_sau_fisi', array(
+		$this->addElement('Text', 'pu_dias_sem_sau_fisi', array(
 			'label'      => 'No último mês por quantos dias sua saúde física não foi boa. (Número de dias) - Somente doenças, machucados, tontura e dor.',
 			));
-		$this->addElement('ValidationTextBox', 'pu_dias_sem_sau_psi', array(
+		$this->addElement('Text', 'pu_dias_sem_sau_psi', array(
 			'label'      => 'No último mês por quantos dias sua saúde mental não foi boa. (Número de dias) - inclui depressão, stress ou problemas emocionais',
 			));
-		$this->addElement('ValidationTextBox', 'pu_dias_sem_dorm_desc', array(
+		$this->addElement('Text', 'pu_dias_sem_dorm_desc', array(
 			'label'      => 'No último mês por quantos dias você não conseguiu descansar ou dormir bem (Número de dias)',
 			));
-		$this->addElement('ValidationTextBox', 'pu_dias_sem_ativid', array(
+		$this->addElement('Text', 'pu_dias_sem_ativid', array(
 			'label'      => 'No último mês por quantos dias deixou de realizar suas tarefas habituais, do dia a dia (trabalho, escola,serviço domestico, visitas etc)por motivo de saúde (Número de dias)',
 			));
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
   
-		$this->addDisplayGroup($elementos, 'gPercep', array('legend'=>"PERCEPÇÃO DO USUÁRIO"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();			
+		$this->addGroup('gPercep','PERCEPÇÃO DO USUÁRIO');
 			
-		$this->addElement('ValidationTextBox', 'hp_dias_acam', array(
+		$this->addElement('Text', 'hp_dias_acam', array(
 			'label'      => 'No último mês quantos dias esteve acamado (a) (por motivo de saúde) (Número de dias)',
 			));
-		$this->addElement('ValidationTextBox', 'hp_ano_interna', array(
+		$this->addElement('Text', 'hp_ano_interna', array(
 			'label'      => 'No último ano quantas vezes esteve internado (a) (Nº de internações)',
 			));
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
   
-		$this->addDisplayGroup($elementos, 'gHP', array('legend'=>"HISTÓRIA PREGRESSA"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();			
+		$this->addGroup('gHP','HISTÓRIA PREGRESSA');
 			
-		$this->addElement('RadioButton', 'hsa_infa_derr_fami', array(
+		$this->addElement('Radio', 'hsa_infa_derr_fami', array(
 			'label'      => 'Já teve infarto ou derrame na família - Pai, mãe ou irmãos ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_medic', array(
+		$this->addElement('Radio', 'hsa_medic', array(
 			'label'      => 'Você faz uso de algum medicamento regularmente - Remédio de uso regular é aquele que você não pode ficar sem ele ',
 			'multiOptions' 	=> $opthsa_medic,
 			));
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
   
-		$this->addDisplayGroup($elementos, 'gHSA', array('legend'=>"HISTÓRIA DA SAÚDE ATUAL"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
+		$this->addGroup('gHSA', 'HISTÓRIA DA SAÚDE ATUAL');
 
-        $this->addElement('RadioButton', 'hsa_acid_uric_alto', array(
+
+        $this->addElement('Radio', 'hsa_acid_uric_alto', array(
 			'label'      => 'Ácido Úrico alto ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_trig_alto', array(
+		$this->addElement('Radio', 'hsa_trig_alto', array(
 			'label'      => 'Triglicérides alto ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_colest_alto', array(
+		$this->addElement('Radio', 'hsa_colest_alto', array(
 			'label'      => 'Colesterol alto (Acima de 200 mg/dl) ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_depres', array(
+		$this->addElement('Radio', 'hsa_depres', array(
 			'label'      => 'Depressão ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_doen_colu', array(
+		$this->addElement('Radio', 'hsa_doen_colu', array(
 			'label'      => 'Doenças na coluna ou das costas (Hiperlordose, hipercifose, hérnia, artrose (desgaste), artrite(inflamação), escoliose (desvio), espondilolistese (bico de papagaio) ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_artri_artro_reum', array(
+		$this->addElement('Radio', 'hsa_artri_artro_reum', array(
 			'label'      => 'Artrite, Artrose ou Reumatismo ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_asm_bronq', array(
+		$this->addElement('Radio', 'hsa_asm_bronq', array(
 			'label'      => 'Asma/Bronquite ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_diabet', array(
+		$this->addElement('Radio', 'hsa_diabet', array(
 			'label'      => 'Diabetes (Acima 100 mg/dl) ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_press_alta', array(
+		$this->addElement('Radio', 'hsa_press_alta', array(
 			'label'      => 'Pressão alta (Hipertensão, acima de 140/90 mmHg ou usa medicamento para PA) ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_doen_coron', array(
+		$this->addElement('Radio', 'hsa_doen_coron', array(
 			'label'      => 'Outra doença do coração - Nas coronárias do coração, sopro, arritmia, comunicação átrio ventricular ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_angi', array(
+		$this->addElement('Radio', 'hsa_angi', array(
 			'label'      => 'Angina ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_infa', array(
+		$this->addElement('Radio', 'hsa_infa', array(
 			'label'      => 'Infarto ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_derr_avc', array(
+		$this->addElement('Radio', 'hsa_derr_avc', array(
 			'label'      => 'Derrame/AVE - Acidente vascular encefálico ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_doen_rena', array(
+		$this->addElement('Radio', 'hsa_doen_rena', array(
 			'label'      => 'Doença renal crônica - Hemodiálise, perda dos rins gerada por Diabetes, P.A. Alta ou Ácido úrico ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'hsa_drink', array(
+		$this->addElement('Radio', 'hsa_drink', array(
 			'label'      => 'Quantas vezes nos ultimos 30 dias você bebeu 5 ou mais drinques em um único dia - Um drinque = Uma lata de cerveja de 350ml, uma taça de vinho ou uma dose de bebida destilada (whisky, cachaça) ',
 			'multiOptions' 	=> $opthsa_drink,
 			));
-		$this->addElement('RadioButton', 'hsa_fuma', array(
+		$this->addElement('Radio', 'hsa_fuma', array(
 			'label'      => 'Você fuma Qual das seguintes frases define melhor seus hábitos em relação ao uso de cigarros ',
 			'multiOptions' 	=> $opthsa_fuma,
 			));
-		$this->addElement('RadioButton', 'hsa_trim_freq_cami', array(
+		$this->addElement('Radio', 'hsa_trim_freq_cami', array(
 			'label'      => 'Nos últimos 3 meses, durante seus períodos de lazer ou de folga com que freqüência você caminhou para fazer exercícios ou fez ginástica ou praticou algum esporte por pelo menos 20 a 30 minutos ',
 			'multiOptions' 	=> $opthsa_trim_freq_cami,
 			));
-		$this->addElement('RadioButton', 'hsa_hab_ativ_fis', array(
+		$this->addElement('Radio', 'hsa_hab_ativ_fis', array(
 			'label'      => 'Qual das seguintes frases que vou ler define seus hábitos ou atividades físicas no dia a dia ',
 			'multiOptions' 	=> $opthsa_hab_ativ_fis,
 			));
-		$this->addElement('RadioButton', 'hsa_sat_corp', array(
+		$this->addElement('Radio', 'hsa_sat_corp', array(
 			'label'      => 'Como você diria que está sua satisfação com seu corpo ',
 			'multiOptions' 	=> $opthsa_sat_corp,
 			));
-		$this->addElement('RadioButton', 'hsa_fat_ativ_fis', array(
+		$this->addElement('Radio', 'hsa_fat_ativ_fis', array(
 			'label'      => 'Fator atividade Física p/ Valor Energético Total - (FAO/OMS/ONU, 1985) ',
 			'multiOptions' 	=> $opthsa_fat_ativ_fis ,
 			));
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
   
-		$this->addDisplayGroup($elementos, 'gHSB', array('legend'=>"ALGUM MÉDICO OU PROFISSIONAL DE SAÚDE, DISSE QUE VOCE TINHA:"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
+		$this->addGroup('gHSB', 'ALGUM MÉDICO OU PROFISSIONAL DE SAÚDE, DISSE QUE VOCE TINHA:');
 			
-		$this->addElement('ValidationTextBox', 'ubs_trim_freq_visi', array(
+		$this->addElement('Text', 'ubs_trim_freq_visi', array(
 			'label'      => 'Quantas vezes você foi, nos últimos 3 meses ao centro de saúde - Somar número de vezes',
 			));
 			
+		$this->addGroup('gUBS', 'VISITA A UNIDADE DE SAÚDE');
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
-  
-		$this->addDisplayGroup($elementos, 'gUBS', array('legend'=>"VISITA A UNIDADE DE SAÚDE"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
-			
-			
-			
-		$this->addElement('RadioButton', 'sa_bem_equip', array(
+		$this->addElement('Radio', 'sa_bem_equip', array(
 			'label'      => 'Você acha que a academia está bem equipada para atender a população em atividades físicas ',
 			'multiOptions' 	=> $optsa_bem_equip,
 			));
-		$this->addElement('RadioButton', 'sa_conhec_profis', array(
+		$this->addElement('Radio', 'sa_conhec_profis', array(
 			'label'      => 'Você acha que os profissionais têm conhecimento suficiente para atender a população em atividades físicas ',
 			'multiOptions' 	=> $optsa_conhec_profis,
 			));
-		$this->addElement('RadioButton', 'sa_satis_acad', array(
+		$this->addElement('Radio', 'sa_satis_acad', array(
 			'label'      => 'Qual é o seu grau de satisfação com esta academia ',
 			'multiOptions' 	=> $optsa_satis_acad,
 			));
-		$this->addElement('RadioButton', 'sa_recomend', array(
+		$this->addElement('Radio', 'sa_recomend', array(
 			'label'      => 'Você recomendaria esta academia para um amigo (a) ou parente seu ',
 			'multiOptions' 	=> $optsa_recomend,
 			));
 			
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
-		$this->addDisplayGroup($elementos, 'gPA', array('legend'=>"AVALIAÇÃO ACADEMIA"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
+		$this->addGroup('gPA', 'AVALIAÇÃO ACADEMIA');
 			
-		$this->addElement('RadioButton', 'flg_aliment', array(
+		$this->addElement('Radio', 'flg_aliment', array(
 			'label'      => 'Alimentou antes de vir para a academia(Até 2 horas) ',
 		    'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'flg_hidrata', array(
+		$this->addElement('Radio', 'flg_hidrata', array(
 			'label'      => 'Hidratou antes de vir para a academia (Até 1 hora) ',
 		    'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'flg_dorm', array(
+		$this->addElement('Radio', 'flg_dorm', array(
 			'label'      => 'Dormiu bem a noite antes de vir para a academia ',
 			'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'flg_alfabt', array(
+		$this->addElement('Radio', 'flg_alfabt', array(
 			'label'      => 'Sabe ler e escrever ',
 		    'multiOptions' 	=> $this->_getSN(),
 			));
-		$this->addElement('RadioButton', 'flg_enxerga', array(
+		$this->addElement('Radio', 'flg_enxerga', array(
 			'label'      => 'Enxerga bem ',
 			'multiOptions' 	=> $this->_getSN(),
 		    ));
-		foreach ($this->getElements() as $elemento) {
-        	$elementos[]= $elemento->getName();
-        }
-		$this->addDisplayGroup($elementos, 'gSA', array('legend'=>"SAÚDE ATUAL"));//,"dojoType"=>'dijit.TitlePane',));
-        $this->clearElements();
 		    
-		$this->addElement('SubmitButton','foo',array(
-		    'required'   => false,
-		    'ignore'     => true,
-		    'label'      => 'Salvar',
-		    ));        
+		$this->addGroup('gSA', 'SAÚDE ATUAL');
+		    
+		$this->addElement(
+		    'submit',
+		    'submit',
+		    array(
+		        'required'   => false,
+		        'ignore'     => true,
+		        'label'      => 'Salvar',
+		    )
+		);      
  		parent::__construct($options); 
 		    
 	}

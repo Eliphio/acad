@@ -38,6 +38,7 @@ class PesquisarController extends Zend_Controller_Action
     		
     	} else {
 	    	$form = $this->getForm();
+	    	$form->submit->setLabel('Pesquisar');
 	    	$this->view->form = $form;         
     	}
     	

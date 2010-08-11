@@ -1,4 +1,9 @@
 <?php
+/**
+ * 
+ * @author Elan
+ *
+ */
 class DadosCadastraisController extends Zend_Controller_Action {
 	protected $_form;
 	protected $_dados;
@@ -67,9 +72,9 @@ class DadosCadastraisController extends Zend_Controller_Action {
 		if ($this->getRequest ()->isPost ()) {
 			$elem = $form->getElement('nom_usua');
 			$this->_dados = $this->getRequest ()->getPost ();
-			//$equipes = new Model_EquipesUbs();
+			$equipes = new Model_EquipesUbs();
 			$profissionais = new Model_ProfissionaisSaude();
-			//$form->cod_eqp_ubs->setMultiOptions($equipes->_getToSelect('cod_eqp_ubs','desc_eqp_ubs'));
+			$form->cod_eqp_ubs->setMultiOptions($equipes->_getToSelect('cod_eqp_ubs','desc_eqp_ubs'));
 			$form->cod_profis_ubs->setMultiOptions($profissionais->_getToSelect('cod_profis','nom_profis'));
 			if ($form->isValid( $this->_dados )) {
 				if (isset ( $this->_dados ['dias_sem'] )) {
