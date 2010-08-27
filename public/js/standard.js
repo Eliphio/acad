@@ -1,3 +1,10 @@
+$(document).ready(function(){
+	$('#hierarchy').menu({
+		content: $('#hierarchy').next().html(),
+		crumbDefaultText: ' '
+	});
+});
+
 function calculaIdade(dataNascimento) {
 	if (dataNascimento.value === null){
 		return false;

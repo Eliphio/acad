@@ -16,7 +16,7 @@ class AnamneseController extends App_Controller_PadraoController
 	
     public function addAction()
     {
-    	$this->view->nome = $this->_request->getPost('nom_usua');
+    	$this->view->nome = $this->_request->getParam('nom_usua');
         $this->view->title = "Anamese";
         $this->view->headTitle($this->view->title, 'PREPEND');
         $this->getForm();

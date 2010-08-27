@@ -7,18 +7,20 @@
 	echo $this->headMeta(); 
 	echo $this->headTitle();
 	echo $this->headStyle();
-	$this->headScript()->appendFile($this->baseUrl().'/js/jquery-1.4.2.min.js','text/javascript');
-	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.dimensions.pack.js','text/javascript');
-	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.positionBy.js','text/javascript');
-	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.bgiframe.js','text/javascript');
-	$this->headScript()->appendFile($this->baseUrl().'/js/jquery.jdMenu.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery-1.4.2.min.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery-ui-1.8.4.custom.min.js','text/javascript');	
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery.ui.datepicker-pt-BR.js','text/javascript');	
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery.positionBy.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery.bgiframe.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery.jdMenu.js','text/javascript');
+	$this->headScript()->appendFile($this->baseUrl().'/js/jquery/js/jquery.maskedinput-1.1.4.pack.js','text/javascript');
 	$this->headScript()->appendFile($this->baseUrl().'/js/standard.js','text/javascript');
 	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/jquery.jdMenu.css');
 	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/jdMenu.slate.css');
 	$this->headLink()->appendStylesheet($this->baseUrl().'/styles/master.css');
+	$this->headLink()->appendStylesheet($this->baseUrl().'/js/jquery/css/redmond/jquery-ui-1.8.4.custom.css');
 	echo $this->headScript();
-	echo $this->headLink()
-	
+	echo $this->headLink();
 	
 	
 	
