@@ -69,7 +69,8 @@ class Form_DadosCadastrais extends Form_PadraoForm
         $this->addElement('radio', 'sex_usua', array(
             'label'      => 'Sexo ',
         	'multiOptions' => $optSexo,
-        	'required' => true
+        	'required' => true,
+        	'separator' => ' '
         ));
         $this->addElement('text', 'cod_sgrp_cbo', array(
             'label'      => 'Código CBOR',
@@ -174,7 +175,9 @@ class Form_DadosCadastrais extends Form_PadraoForm
         $this->addElement('radio', 'obj_aln', array(
             'label'      => 'Objetivo do aluno da academia ',
         	'multiOptions' 	=> $optObjetivo,
+        	'separator' => ' ',
         	'required' => true
+        
         ));
         $this->addElement('radio', 'flg_info_acad', array(
             'label'      => 'Como você ficou sabendo da academia da cidade',
@@ -191,6 +194,7 @@ class Form_DadosCadastrais extends Form_PadraoForm
         $this->addElement('radio', 'num_vezes_sem', array(
             'label'      => 'Nº vezes na semana ',
         	'multiOptions'=>$optNumVezes,
+        	'separator' => ' ',
 		    'required' => true
         ));
         $this->addElement('MultiCheckbox', 'dias_sem', array(

@@ -107,30 +107,37 @@ class Form_Anamnese extends  Form_PadraoForm
 		$this->addElement('Radio', 'pq_card_superv_medic', array(
 			'label'      => 'Seu médico já disse que você possui algum problema cardíaco e recomenda atividade físicas apenas sob supervisão médica ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_dor_peito_dia', array(
 			'label'      => 'Você tem dor no peito provocada por atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_dor_peio_mes', array(
 			'label'      => 'Você teve dor no peito no último mês quando praticava atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_desmaio', array(
 			'label'      => 'Você já perdeu a consciência em alguma ocasião ou sofreu alguma queda em virtude de tontura ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_prob_osseo', array(
 			'label'      => 'Você tem algum problema ósseo ou articular que poderia agravar-se com as atividade física ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_pressao_alta', array(
 			'label'      => 'Algum médico já lhe prescreveu medicamento para pressão arterial ou para o coração ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'pq_superv_medic', array(
 			'label'      => 'Você tem conhecimento, por informação médica ou pela própria experiência, de algum motivo que poderia impedi-lo de participar de atividades físicas sem supervisão médica ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Text', 'pq_pontua', array(
 			'label'      => 'Pontuação PAR-Q - Classificação de risco do usuário para atividade física',
@@ -190,58 +197,72 @@ class Form_Anamnese extends  Form_PadraoForm
         $this->addElement('Radio', 'hsa_acid_uric_alto', array(
 			'label'      => 'Ácido Úrico alto ',
 			'multiOptions' 	=> $this->_getSN(),
+        	'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_trig_alto', array(
 			'label'      => 'Triglicérides alto ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_colest_alto', array(
 			'label'      => 'Colesterol alto (Acima de 200 mg/dl) ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_depres', array(
 			'label'      => 'Depressão ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_doen_colu', array(
 			'label'      => 'Doenças na coluna ou das costas (Hiperlordose, hipercifose, hérnia, artrose (desgaste), artrite(inflamação), escoliose (desvio), espondilolistese (bico de papagaio) ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_artri_artro_reum', array(
 			'label'      => 'Artrite, Artrose ou Reumatismo ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_asm_bronq', array(
 			'label'      => 'Asma/Bronquite ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_diabet', array(
 			'label'      => 'Diabetes (Acima 100 mg/dl) ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_press_alta', array(
 			'label'      => 'Pressão alta (Hipertensão, acima de 140/90 mmHg ou usa medicamento para PA) ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_doen_coron', array(
 			'label'      => 'Outra doença do coração - Nas coronárias do coração, sopro, arritmia, comunicação átrio ventricular ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_angi', array(
 			'label'      => 'Angina ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_infa', array(
 			'label'      => 'Infarto ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_derr_avc', array(
 			'label'      => 'Derrame/AVE - Acidente vascular encefálico ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_doen_rena', array(
 			'label'      => 'Doença renal crônica - Hemodiálise, perda dos rins gerada por Diabetes, P.A. Alta ou Ácido úrico ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'hsa_drink', array(
 			'label'      => 'Quantas vezes nos ultimos 30 dias você bebeu 5 ou mais drinques em um único dia - Um drinque = Uma lata de cerveja de 350ml, uma taça de vinho ou uma dose de bebida destilada (whisky, cachaça) ',
@@ -299,22 +320,27 @@ class Form_Anamnese extends  Form_PadraoForm
 		$this->addElement('Radio', 'flg_aliment', array(
 			'label'      => 'Alimentou antes de vir para a academia(Até 2 horas) ',
 		    'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'flg_hidrata', array(
 			'label'      => 'Hidratou antes de vir para a academia (Até 1 hora) ',
 		    'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'flg_dorm', array(
 			'label'      => 'Dormiu bem a noite antes de vir para a academia ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'flg_alfabt', array(
 			'label'      => 'Sabe ler e escrever ',
 		    'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 			));
 		$this->addElement('Radio', 'flg_enxerga', array(
 			'label'      => 'Enxerga bem ',
 			'multiOptions' 	=> $this->_getSN(),
+			'separator' => ' ',
 		    ));
 		    
 		$this->addGroup('gSA', 'SAÚDE ATUAL');
