@@ -21,6 +21,12 @@
 <script type="text/javascript">
 <!--
 $(document).ready(function(){
+    $.mask.definitions['d']='[0123]';
+    $.mask.definitions['D']='[0123456789]';
+    $.mask.definitions['m']='[01]';
+    $.mask.definitions['M']='[0123456789]';
+    $.mask.definitions['a']='[12]';
+    $.mask.definitions['A']='[09]';
 	$("#ida_usua").attr({readonly: "true"});
 	$("#dat_nasc").change(
 		function(){
@@ -28,14 +34,14 @@ $(document).ready(function(){
 			if (idade) {
 				$("#ida_usua").val(idade);
 			}
-		})
+		});
 	$("#dat_nasc").datepicker({
 		autoSize: true,
 		navigationAsDateFormat: true ,
 		yearRange: 'c-99:c', 
 		changeMonth: true,
 		changeYear: true,
-		showOn: 'both',
+		showOn: 'button',
 		buttonImage: '<?php echo $this->baseUrl();?>/js/jquery/css/redmond/images/calendar.gif',
 		buttonImageOnly: true
 	
@@ -45,11 +51,14 @@ $(document).ready(function(){
 		yearRange: 'c-3:c', 
 		changeMonth: true,
 		changeYear: true,
-		showOn: 'both',
+		showOn: 'button',
 		buttonImage: '<?php echo $this->baseUrl();?>/js/jquery/css/redmond/images/calendar.gif',
 		buttonImageOnly: true
 		
 	});
+	$("#dat_nasc").mask("dD/mM/aA99");
+	$("#dat_aval").mask("dD/mM/aA99");
+	
     $("input[name^=num_vezes_sem]").click(function(){
     	$("input[name^=dias_sem]").each(
             	function(){
